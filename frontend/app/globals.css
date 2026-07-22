@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background-color: #1b1f3b;
+  color: #f7f3ea;
+}
+
+::selection {
+  background-color: #c4623d;
+  color: #f7f3ea;
+}
+
+.envelope-unfold {
+  animation: unfold 0.35s ease-out;
+  transform-origin: top center;
+}
+
+@keyframes unfold {
+  0% {
+    transform: scaleY(0.85);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
