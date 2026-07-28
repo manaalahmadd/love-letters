@@ -19,10 +19,10 @@ A private, guided letter-writing app inspired by John Gray's "Private Session" c
 
 Deployed on Render (backend) and Vercel (frontend), with a free Neon Postgres instance for storage.
 
-## Screenshots
+## Screenshot
 
-*<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/513fa101-3d5b-415c-b32d-dbb7ad3e4017" />
-*
+<img width="1365" height="767" alt="image" src="https://github.com/user-attachments/assets/513fa101-3d5b-415c-b32d-dbb7ad3e4017" />
+
 
 ## Getting started locally
 
