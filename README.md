@@ -52,7 +52,7 @@ cp .env.local.example .env.local
 npm run dev
 ```
 
-App: [`http://localhost:3000`](https://love-letters-oy4o.vercel.app/)
+
 
 ## Project structure
 
