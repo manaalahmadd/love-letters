@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Love Letters — private guided letters',
+  title: 'Love Letters',
   description: 'Write what you feel, privately, and let it find you again later.',
 };
 
