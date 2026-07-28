@@ -14,12 +14,18 @@ export default function LetterDetailPage() {
   const [letter, setLetter] = useState<Letter | null>(null);
   const [fetching, setFetching] = useState(true);
   const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const [editingTitle, setEditingTitle] = useState(false);
+  const [titleDraft, setTitleDraft] = useState('');
+  const [savingTitle, setSavingTitle] = useState(false);
 
   useEffect(() => {
     if (!token) return;
     api
       .getLetter(token, letterId)
-      .then(setLetter)
+      .then((l) => {
+        setLetter(l);
+        setTitleDraft(l.title || '');
+      })
       .catch(() => router.push('/letters'))
       .finally(() => setFetching(false));
   }, [token, letterId, router]);
@@ -28,6 +34,23 @@ export default function LetterDetailPage() {
     if (!token) return;
     await api.deleteLetter(token, letterId);
     router.push('/letters');
+  }
+
+  async function saveTitle() {
+    if (!token || !letter) return;
+    setSavingTitle(true);
+    try {
+      const updated = await api.updateLetter(token, letterId, { title: titleDraft });
+      setLetter(updated);
+      setEditingTitle(false);
+    } finally {
+      setSavingTitle(false);
+    }
+  }
+
+  function cancelEditTitle() {
+    setTitleDraft(letter?.title || '');
+    setEditingTitle(false);
   }
 
   if (loading || fetching || !letter) {
@@ -49,7 +72,40 @@ export default function LetterDetailPage() {
             {new Date(letter.created_at).toLocaleDateString()}
           </span>
         </div>
-        <h1 className="font-display text-2xl mb-6">{letter.title || 'Untitled letter'}</h1>
+
+        {editingTitle ? (
+          <div className="flex items-center gap-2 mb-6">
+            <input
+              type="text"
+              value={titleDraft}
+              onChange={(e) => setTitleDraft(e.target.value)}
+              placeholder="Untitled letter"
+              autoFocus
+              className="font-display text-2xl bg-transparent border-b border-ink/30 focus:outline-none focus:border-wax flex-1"
+            />
+            <button
+              onClick={saveTitle}
+              disabled={savingTitle}
+              className="text-xs text-wax underline disabled:opacity-50"
+            >
+              {savingTitle ? 'Saving...' : 'Save'}
+            </button>
+            <button onClick={cancelEditTitle} className="text-xs text-slate underline">
+              Cancel
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-3 mb-6 group">
+            <h1 className="font-display text-2xl">{letter.title || 'Untitled letter'}</h1>
+            <button
+              onClick={() => setEditingTitle(true)}
+              className="text-xs text-slate underline opacity-60 hover:opacity-100"
+            >
+              Rename
+            </button>
+          </div>
+        )}
+
         <p className="font-display leading-relaxed whitespace-pre-wrap">{letter.content}</p>
       </div>
 

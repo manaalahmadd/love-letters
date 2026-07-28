@@ -84,4 +84,7 @@ export const api = {
 
   deleteLetter: (token: string, letterId: string) =>
     request<{ ok: boolean }>(`/letters/${letterId}`, { method: 'DELETE', token }),
+
+  updateLetter: (token: string, letterId: string, updates: { title?: string; content?: string }) =>
+    request<Letter>(`/letters/${letterId}`, { method: 'PATCH', token, body: updates }),
 };
