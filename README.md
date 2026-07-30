@@ -51,7 +51,7 @@ npm run dev
 
 ## Project structure
 
-backend/
+```backend/
 app/
 main.py # FastAPI app, CORS, router wiring
 models.py # User, Letter, PromptTemplate, MoodLog
@@ -78,3 +78,4 @@ api.ts # Backend API client
 auth-context.tsx # Token/user state
 components/
 EnvelopeCard.tsx
+```
