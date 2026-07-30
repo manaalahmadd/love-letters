@@ -50,3 +50,31 @@ npm run dev
 ```
 
 ## Project structure
+
+backend/
+app/
+main.py # FastAPI app, CORS, router wiring
+models.py # User, Letter, PromptTemplate, MoodLog
+schemas.py # Pydantic request/response models
+auth.py # JWT + bcrypt
+encryption.py # Fernet encrypt/decrypt for letter content at rest
+prompts.py # Anger/Hurt/Fear/Regret/Love template data
+ai.py # Claude API call with fallback to static templates
+routers/
+auth_routes.py
+prompt_routes.py
+letter_routes.py # includes resurfacing logic
+mood_routes.py
+
+frontend/
+app/
+page.tsx # Landing
+login/, signup/ # Auth
+dashboard/ # Resurfaced letters + entry points
+write/ # Guided five-stage writing flow
+letters/ # List + detail view
+lib/
+api.ts # Backend API client
+auth-context.tsx # Token/user state
+components/
+EnvelopeCard.tsx
