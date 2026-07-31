@@ -1,6 +1,6 @@
 # Love Letters
 
-A private, guided letter-writing app inspired by John Gray's "Private Session" concept in *Men Are from Mars, Women Are from Venus*. AI-personalized prompts walk you through the Anger, Hurt, Fear, Regret, Love format from the book. Letters are encrypted at rest and quietly resurface weeks later, so you can see how you feel now versus then.
+A private, guided letter-writing app inspired by John Gray's "Private Session" concept in the book *Men Are from Mars, Women Are from Venus*. AI-personalized prompts walk you through the Anger, Hurt, Fear, Regret, Love format from the book. Letters are encrypted at rest and quietly resurface weeks later, so you can see how you feel now versus then.
 
 **Live app**: [love-letters-1511.vercel.app](https://love-letters-1511.vercel.app)
 **API**: [love-letters-backend.onrender.com/docs](https://love-letters-backend.onrender.com/docs)
